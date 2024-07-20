@@ -51,26 +51,26 @@ public class EndPoints {
         return response;
     }
 
-    public static Response updateUser(User user,String username){
+    public static Response updateUser(JSONObject jsonObject,String userId){
         Response response =
                 given()
                         .contentType(ContentType.JSON)
                         .accept(ContentType.JSON)
-                        .pathParam("username",username)
-                        .body(user)
+                        .pathParam("userId",userId)
+                        .body(jsonObject.toString())
                .when()
                         //.put(config().getString("update_user"));
                         .put(BaseURL.update_user);
         return response;
     }
 
-    public static Response deleteUser(String username){
+    public static Response deleteUser(String userId){
         Response response =
                 given()
-                        .pathParam("username",username)
+                        .pathParam("userId",userId)
                .when()
                         //.delete(config().getString("delete_user"));
-                        .delete(BaseURL.delete_user);
+                        .put(BaseURL.delete_user);
         return response;
     }
 }
