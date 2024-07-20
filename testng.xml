@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Practice Suite">
+    <listeners>
+        <listener class-name="api.Utilities.Reporting"></listener>
+    </listeners>
+    <!--<test name="Test Basics 1">
+        <classes>
+            <class name="api.test.Learning.APIChaining_CreateUser"/>
+            <class name="api.test.Learning.APIChaining_GetUser"/>
+            <class name="api.test.Learning.APIChaining_UpdateUser"/>
+            <class name="api.test.Learning.APIChaining_DeleteUser"/>
+        </classes>
+    </test>--> <!-- Test -->
+
+    <test name="Framework">
+        <classes>
+            <!--<class name="api.test.PetStore.TestDataTest"></class>-->
+            <class name="api.test.userModule.CreateUser"></class>
+        </classes>
+
+    </test>
+
+</suite> <!-- Suite -->
