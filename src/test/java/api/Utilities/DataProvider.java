@@ -2,7 +2,7 @@ package api.Utilities;
 
 public class DataProvider {
 
-    @org.testng.annotations.DataProvider(name="Data")
+    @org.testng.annotations.DataProvider(name="UserData")
     public Object[][] getAllData(){
         String path = System.getProperty("user.dir")+"//src//test//resources//global//UserData.xlsx";
         ExcelUtility excelUtility = new ExcelUtility(path);

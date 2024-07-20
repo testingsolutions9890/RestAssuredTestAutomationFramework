@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import static api.endPoints.EndPoints.*;
 import static io.restassured.RestAssured.given;
 
-public class CreateUser {
+public class UserModule_CRUD_TestDataInTC {
     JSONObject userDetails = new JSONObject();
     @Test(priority=0)
     void testCreateUser(ITestContext context) {

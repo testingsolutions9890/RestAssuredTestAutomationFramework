@@ -16,7 +16,7 @@
     <test name="Framework">
         <classes>
             <!--<class name="api.test.PetStore.TestDataTest"></class>-->
-            <class name="api.test.userModule.CreateUser"></class>
+            <class name="api.test.userModule.UserModule_CRUD_TestDataInTC"></class>
         </classes>
 
     </test>
