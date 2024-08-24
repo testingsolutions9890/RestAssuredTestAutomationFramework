@@ -1,5 +1,4 @@
 package api.endPoints;
-import api.payloads.User;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.json.JSONObject;
@@ -20,17 +19,7 @@ public class EndPoints {
         return resourceBundle;
     }
 
-    public static Response createUser(User user){
-        Response response =
-        given()
-                .contentType(ContentType.JSON)
-                .accept(ContentType.JSON)
-                .body(user)
-       .when()
-                .post(BaseURL.create_user);
-                //.post(config().getString("create_user"));
-        return response;
-    }
+
     public static Response createUser( JSONObject jsonObject){
         Response response =
                 given()
