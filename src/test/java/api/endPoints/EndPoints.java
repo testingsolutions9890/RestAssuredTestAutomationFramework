@@ -62,4 +62,35 @@ public class EndPoints {
                         .put(BaseURL.delete_user);
         return response;
     }
+
+    // Create Activity
+    public static Response createActivity(JSONObject jsonObject){
+        Response response =
+                given()
+                        .contentType(ContentType.JSON)
+                        .body(jsonObject.toString())
+                        .when()
+                        .post(BaseURL.create_Activity);
+        return response;
+    }
+
+    public static Response getActivity(String userId){
+        Response response =
+                given()
+                        .pathParam("userId",userId)
+                        .when()
+                        .get(BaseURL.getAllCustomActivities);
+        return response;
+    }
+
+    public static Response assignCustomActivitySchedule(JSONObject jsonObject){
+        Response response =
+                given()
+                        .contentType(ContentType.JSON)
+                        .body(jsonObject.toString())
+                        .when()
+                        .post(BaseURL.Assign_Custom_Activity_Schedule);
+        return response;
+    }
+
 }
