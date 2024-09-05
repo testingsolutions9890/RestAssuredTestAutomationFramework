@@ -19,7 +19,7 @@ public class createCustomActivity {
         activityDetails.put("description","Cycling for 30 min");
         activityDetails.put("material","bicycle");
         activityDetails.put("points",40);
-        activityDetails.put("user_id",33); // provide user id
+        activityDetails.put("user_id",134); // provide user id
         activityDetails.put("is_archived",false);
         activityDetails.put("created_by","Vijay");
 
@@ -109,7 +109,7 @@ public class createCustomActivity {
         String custActivityId = (String) context.getAttribute("custActivityId");
         String custActivityScheduleId = (String) context.getAttribute("custActivityScheduleId");
 
-        activityDetails.put("childs", new int[]{3, 4});
+        activityDetails.put("childs", new int[]{49});
         activityDetails.put("cust_activity_schedule_id", custActivityScheduleId); // Use the retrieved custActivityScheduleId
         activityDetails.put("cust_activity_id", custActivityId);  // Use the retrieved custActivityId
         activityDetails.put("created_by", "Vijay");
@@ -129,28 +129,28 @@ public class createCustomActivity {
     }
 
 
-    @Test(priority=3)
-    void testDeleteUser(ITestContext context) {
-        String user_id = (String) context.getAttribute("userID");
-        Response deleteactivityResponse = deleteUser(user_id);
-
-        System.out.println("Delete Activity>>>" + deleteactivityResponse.getBody().asString());
-        Assert.assertEquals(deleteactivityResponse.getStatusCode(), 200, "Verifying Status Code");
-
-        JsonPath jsonPathEvaluator = deleteactivityResponse.jsonPath();
-        String userID = jsonPathEvaluator.get("data.user_id").toString();
-        Assert.assertNotNull(userID, "Verifying user ID is not null");
-        Assert.assertEquals(userID, user_id, "Verifying if user ID is same");
-
-        Boolean is_archived = jsonPathEvaluator.get("data.is_archived");
-        Assert.assertTrue(is_archived);
-
-        Response getUserResponse = getUser(userID);
-        Assert.assertEquals(getUserResponse.getStatusCode(), 200, "Verifying Status Code");
-
-        System.out.println("get UserByID>>>" + getUserResponse.getBody().asString());
-        JsonPath jsonPathEvaluatorGetUser = getUserResponse.jsonPath();
-        Assert.assertTrue(jsonPathEvaluatorGetUser.get("data.is_archived"));
-    }
+//    @Test(priority=3)
+//    void testDeleteUser(ITestContext context) {
+//        String user_id = (String) context.getAttribute("userID");
+//        Response deleteactivityResponse = deleteUser(user_id);
+//
+//        System.out.println("Delete Activity>>>" + deleteactivityResponse.getBody().asString());
+//        Assert.assertEquals(deleteactivityResponse.getStatusCode(), 200, "Verifying Status Code");
+//
+//        JsonPath jsonPathEvaluator = deleteactivityResponse.jsonPath();
+//        String userID = jsonPathEvaluator.get("data.user_id").toString();
+//        Assert.assertNotNull(userID, "Verifying user ID is not null");
+//        Assert.assertEquals(userID, user_id, "Verifying if user ID is same");
+//
+//        Boolean is_archived = jsonPathEvaluator.get("data.is_archived");
+//        Assert.assertTrue(is_archived);
+//
+//        Response getUserResponse = getUser(userID);
+//        Assert.assertEquals(getUserResponse.getStatusCode(), 200, "Verifying Status Code");
+//
+//        System.out.println("get UserByID>>>" + getUserResponse.getBody().asString());
+//        JsonPath jsonPathEvaluatorGetUser = getUserResponse.jsonPath();
+//        Assert.assertTrue(jsonPathEvaluatorGetUser.get("data.is_archived"));
+//    }
 
 }

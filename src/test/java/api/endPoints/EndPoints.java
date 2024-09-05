@@ -3,6 +3,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -90,6 +91,96 @@ public class EndPoints {
                         .body(jsonObject.toString())
                         .when()
                         .post(BaseURL.Assign_Custom_Activity_Schedule);
+        return response;
+    }
+
+    // Add Achievement
+    public static Response addChildAchievement(JSONObject jsonObject)
+    {
+        Response response =
+                given()
+                        .contentType(ContentType.JSON)
+                        .body(jsonObject.toString())
+                        .when()
+                        .post(BaseURL.Add_Child_Achievement);
+        return response;
+    }
+
+    public static Response getChildAchievementByChildID(String child_Id){
+        Response response =
+                given()
+                        .pathParam("child_Id",child_Id)
+                        .when()
+                        .get(BaseURL.get_Child_Achievement_By_ChildID);
+        return response;
+    }
+
+    public static Response updateChildAchievement(JSONObject jsonObject,String child_achievement_id){
+        Response response =
+                given()
+                        .contentType(ContentType.JSON)
+                        .accept(ContentType.JSON)
+                        .pathParam("child_achievement_id",child_achievement_id)
+                        .body(jsonObject.toString())
+                        .when()
+                        .put(BaseURL.update_Child_Achievement);
+        return response;
+
+    }
+
+    public static Response getAchievementCategory(){
+        Response response =
+                given()
+                       // .pathParam("achievement_Id",achievement_Id)
+                        .when()
+                        .get(BaseURL.get_Achievement_Category);
+        return response;
+    }
+
+    public static Response getAchievementProficiency(){
+        Response response =
+                given()
+                        // .pathParam("achievement_Id",achievement_Id)
+                        .when()
+                        .get(BaseURL.get_Achievement_Proficiency);
+        return response;
+    }
+
+    public static Response getAchievementFromAllCategory(){
+        Response response =
+                given()
+                        // .pathParam("achievement_Id",achievement_Id)
+                        .when()
+                        .get(BaseURL.get_Achievement_From_All_Category);
+        return response;
+    }
+
+    public static Response addMediaInAchievement(ContentType contentType,String file_path,String parent_id,String comment,String ai_confidence,String ai_approval,String created_by,String revision,String child_achievement_id,String child_id)
+    {
+        String mimeType;
+        if (file_path.endsWith(".png") || file_path.endsWith(".jpg") || file_path.endsWith(".jpeg")) {
+            mimeType = "image/png";  // You can adjust based on the actual file extension
+        } else if (file_path.endsWith(".mp4") || file_path.endsWith(".avi")) {
+            mimeType = "video/mp4";  // Use appropriate MIME type for video
+        } else {
+            throw new IllegalArgumentException("Unsupported file type");
+        }
+
+        Response response =
+                given()
+                        .contentType(contentType)
+                        .multiPart("child_achievement_id",child_achievement_id)
+                        .multiPart("parent_id",parent_id)
+                        .multiPart("child_id",child_id)
+                        .multiPart("comment",comment)
+                        .multiPart("ai_confidence",ai_confidence)
+                        .multiPart("ai_approval",ai_approval)
+                        .multiPart("created_by",created_by)
+                        .multiPart("revision",revision)
+                        .multiPart("file1",new File(file_path),mimeType)
+                     //   .multiPart("file1", file_path, "image/png")
+                        .when()
+                        .post(BaseURL.Add_Media_In_Achievement);
         return response;
     }
 
