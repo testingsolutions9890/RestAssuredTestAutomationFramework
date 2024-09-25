@@ -65,7 +65,11 @@ public class Reporting extends TestListenerAdapter {
 
         if(f.exists())
         {
-            logger.fail("Screenshot is below:" + logger.addScreenCaptureFromPath(screenshotPath));
+            try {
+                logger.fail("Screenshot is below:" + logger.addScreenCaptureFromPath(screenshotPath));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }

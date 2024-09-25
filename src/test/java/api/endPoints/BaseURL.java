@@ -23,11 +23,4 @@ public class BaseURL {
     public  static String get_Achievement_From_All_Category = base_url+"/api/get-achievement";
     public  static String Add_Media_In_Achievement = base_url+"/api/achievement-media";
 
-
-
-
-
-
-
-
 }

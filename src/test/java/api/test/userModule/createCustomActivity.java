@@ -19,7 +19,7 @@ public class createCustomActivity {
         activityDetails.put("description","Cycling for 30 min");
         activityDetails.put("material","bicycle");
         activityDetails.put("points",40);
-        activityDetails.put("user_id",134); // provide user id
+        activityDetails.put("user_id",137); // provide user id
         activityDetails.put("is_archived",false);
         activityDetails.put("created_by","Vijay");
 

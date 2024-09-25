@@ -26,7 +26,7 @@ public class Achievement_CRUD {
         achievementDetails.put("achievement_id",1);
         achievementDetails.put("achievement_proficiency_id",1);
         achievementDetails.put("description","Testing Media Upload");
-        achievementDetails.put("date","2024-09-05"); // today
+        achievementDetails.put("date","2024-09-13"); // today
         achievementDetails.put("points",50);
         achievementDetails.put("created_by","Vijay");
         achievementDetails.put("updated_by","Vijay");
